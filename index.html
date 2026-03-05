@@ -1,27 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Hello!</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="./style.css">
-    
-    <!-- import the webpage's javascript file -->
-    <script src="./script.js" defer></script>
-  </head>  
-  <body>
-    <h1>Hi there!</h1>
-    
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love</title>
 
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
-  </body>
+<style>
+body{
+margin:0;
+padding:0;
+font-family:Arial, sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+.container{
+background:rgba(0,0,0,0.35);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:white;
+color:#ff4d6d;
+font-size:16px;
+cursor:pointer;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.popup-content{
+background:white;
+color:#333;
+padding:30px;
+border-radius:15px;
+max-width:350px;
+text-align:center;
+font-family:cursive;
+}
+
+.close{
+margin-top:15px;
+background:#ff4d6d;
+color:white;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:24px;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>🎉 Happy Birthday My Love 🎂</h1>
+
+<p>You are the most beautiful part of my life ❤️</p>
+
+<button onclick="openLetter()">💌 Open My Love Letter</button>
+</div>
+
+<!-- Love Letter Popup -->
+
+<div class="popup" id="lovePopup">
+<div class="popup-content">
+<h2>My Love Letter ❤️</h2>
+
+<p>
+To the most special person in my life,  
+every moment with you feels magical.  
+Your smile makes my world brighter.  
+I wish your birthday is filled with happiness,  
+love, and endless beautiful memories.  
+
+I love you forever. ❤️
+</p>
+
+<button class="close" onclick="closeLetter()">Close</button>
+</div>
+</div>
+
+<script>
+
+function openLetter(){
+document.getElementById("lovePopup").style.display="flex";
+}
+
+function closeLetter(){
+document.getElementById("lovePopup").style.display="none";
+}
+
+/* Hearts animation */
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
 </html>
