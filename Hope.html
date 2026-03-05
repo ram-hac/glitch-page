@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Maha ❤️‍🩹</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+font-family:Arial, sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+overflow:hidden;
+color:white;
+text-align:center;
+}
+
+/* Main box */
+
+.container{
+background:rgba(0,0,0,0.35);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:white;
+color:#ff4d6d;
+font-size:16px;
+cursor:pointer;
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+/* Envelope */
+
+.envelope{
+position:relative;
+width:320px;
+height:220px;
+background:#ff4d6d;
+border-radius:10px;
+overflow:hidden;
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ff758c;
+transform-origin:top;
+transition:transform 1s;
+}
+
+.envelope.open .flap{
+transform:rotateX(180deg);
+}
+
+/* Letter */
+
+.letter{
+position:absolute;
+bottom:-250px;
+left:0;
+width:100%;
+height:100%;
+background:white;
+color:#333;
+padding:20px;
+box-sizing:border-box;
+transition:bottom 2s;
+font-family:cursive;
+overflow:auto;
+}
+
+.envelope.open .letter{
+bottom:0;
+}
+
+/* typing text */
+
+#typing{
+white-space:pre-line;
+}
+
+/* close button */
+
+.close{
+margin-top:10px;
+background:#ff4d6d;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* hearts */
+
+.heart{
+position:absolute;
+bottom:-20px;
+font-size:24px;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-110vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="music" loop>
+<source src="Ciciliya Ciciliya-SenSongsMp3.Co (1).mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<h1>🎉 Happy Birthday Maha ❤️‍🩹</h1>
+<p>You are the most beautiful part of my life ❤️</p>
+<button onclick="openEnvelope()">💌 Open My Soul</button>
+</div>
+
+<!-- Popup -->
+
+<div class="popup" id="popup">
+
+<div class="envelope" id="envelope">
+
+<div class="flap"></div>
+
+<div class="letter">
+
+<h3>My Soul ❤️</h3>
+
+<p id="typing"></p>
+
+<button class="close" onclick="closeEnvelope()">Close</button>
+
+</div>
+</div>
+</div>
+
+<script>
+
+/* Love Letter Text */
+
+const text = `To the most special person in my life,
+
+Every moment with you feels magical.
+Your smile makes my world brighter.
+
+I wish your birthday is filled with happiness,
+love, and endless beautiful memories.
+
+If fate gives me another life, you'll be the first soul I search for —
+and the one I love endlessly.
+
+If meeting me was a bad part of your life then I'm sorry ~.
+
+Leaving you for your peace is my last gift for you :) 🫠💗.`;
+
+
+/* Envelope Open */
+
+function openEnvelope(){
+
+document.getElementById("popup").style.display="flex";
+
+setTimeout(()=>{
+document.getElementById("envelope").classList.add("open");
+typeWriter();
+},300);
+
+/* play music */
+
+document.getElementById("music").play();
+
+}
+
+function closeEnvelope(){
+document.getElementById("popup").style.display="none";
+document.getElementById("envelope").classList.remove("open");
+}
+
+
+/* typing effect */
+
+let i=0;
+
+function typeWriter(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
+}
+
+
+/* floating hearts */
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},6000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
